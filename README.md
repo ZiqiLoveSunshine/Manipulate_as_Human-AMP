@@ -1,6 +1,6 @@
 # Manipulate as Human: Learning Task-oriented Manipulation Skills by Adversarial Motion Priors #
 
-Codebase for the "[Manipulate as Human: Learning Task-oriented Manipulation Skills by Adversarial Motion Priors]()" project(under review). This repository contains the code necessary to ground agent skills using small amounts of reference data (4.5 seconds). All experiments are performed using the robot Kinova Gen3 with Gripper 2f85. This repository is modified based on Alescontrela's [AMP_for_hardware](https://github.com/Alescontrela/AMP_for_hardware) repo and Nikita Rudin's [arm_gym](https://github.com/leggedrobotics/arm_gym) repo, and enables us to train policies using [Isaac Gym](https://developer.nvidia.com/isaac-gym).
+Codebase for the "[Manipulate as Human: Learning Task-oriented Manipulation Skills by Adversarial Motion Priors](https://www.cambridge.org/core/journals/robotica/article/manipulate-as-human-learning-taskoriented-manipulation-skills-by-adversarial-motion-priors/74AC9205DD0BB47D7905E4764B4E61F2)" project(under review). This repository contains the code necessary to ground agent skills using small amounts of reference data (4.5 seconds). All experiments are performed using the robot Kinova Gen3 with Gripper 2f85. This repository is modified based on Alescontrela's [AMP_for_hardware](https://github.com/Alescontrela/AMP_for_hardware) repo and Nikita Rudin's [arm_gym](https://github.com/leggedrobotics/arm_gym) repo, and enables us to train policies using [Isaac Gym](https://developer.nvidia.com/isaac-gym).
 
 
 ### Installation ###
@@ -51,3 +51,19 @@ Codebase for the "[Manipulate as Human: Learning Task-oriented Manipulation Skil
 3. Record video of a trained policy
 ```python arm_gym/scripts/record_policy.py --task=gen3_amp```
     - This saves a video in the base directory.
+
+
+## Citation
+
+If you find this repo useful for your research, please consider citing the paper
+
+```
+@article{Ma_Tian_Gao_2025, 
+        title={Manipulate as human: learning task-oriented manipulation skills by adversarial motion priors}, 
+        DOI={10.1017/S0263574725001444}, 
+        journal={Robotica}, 
+        author={Ma, Ziqi and Tian, Changda and Gao, Yue}, 
+        year={2025}, 
+        pages={1–13}
+        }
+```
