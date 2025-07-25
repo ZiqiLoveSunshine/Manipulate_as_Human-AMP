@@ -1,0 +1,48 @@
+<mujoco model="nail">
+    <compiler angle="radian" meshdir="../meshes/" autolimits="true"/>
+    <option solver="CG" tolerance="1e-6" impratio="10"/>
+    <size nconmax="500" njmax="5000" nstack="5000000"/>
+
+    <asset>
+        <mesh name="nail_head" file="nail_head.STL" scale="0.0045 0.0045 0.0045"/>
+        <mesh name="nail_down" file="nail_down.STL" scale="0.0045 0.0045 0.0045"/>
+        <mesh name="nail_tool" file="hammertool.STL" scale="0.0045 0.0045 0.0045"/>
+    </asset>
+
+    <default>
+      <default class="nail">
+        <general biastype="affine"/>
+        <default class="nailvisual">
+            <geom type="mesh" solimp="0.95 0.99 0.001" solref="0.004 1" priority="1" contype="0" conaffinity="0" group="2"/>
+        </default>
+        <default class="nailcollision">
+            <geom type="mesh" group="3"/>
+        </default>
+      </default>
+
+    </default>
+
+    
+    <worldbody>
+    <site name="nail_head_pos_world" pos="0.028 0.029 0.168" size="0.01 0.01 0.01" type="sphere" rgba="1 0 0 0.2"/>
+        <body name="nail" pos="0 0 0" quat="0.5 0.5 0.5 0.5">
+            <inertial pos="0.035 -0.03 0.075" quat="1 0 0 0" mass="20" diaginertia="0.03 0.03 0.03" />
+            <!-- <site name="lower_pos" pos="0 0 0" size="0.01 0.01 0.01" type="sphere" rgba="1 0 0 0.5"/> -->
+            <geom class="nailvisual" friction="0.7" mesh="nail_head" />
+            <geom class="nailcollision" mesh="nail_head" />
+            <site name="nail_head_pos" pos="0.042 0.253 0.022" size="0.01 0.01 0.01" type="sphere" rgba="1 1 1 0.1"/>
+            <site name="nail_root_pos" pos="0.042 0.25 0.022" size="0.01 0.01 0.01" type="sphere" rgba="1 1 1 0.1"/>
+            <geom class="nailvisual" friction="0.7" mesh="nail_down" />
+            <geom class="nailcollision" mesh="nail_down" />
+            <geom class="nailvisual" friction="0.7" mesh="nail_tool" />
+            <geom class="nailcollision" mesh="nail_tool" />
+            <body name="NailHead" pos="0.042 0.253 0.022" quat="0.5 0.5 0.5 -0.5">
+                <geom type="cylinder" size="0.005 0.002 0"/>
+            </body>
+            <body name="NailRoot" pos="0.042 0.25 0.022" quat="0.5 0.5 0.5 -0.5">
+                <geom type="cylinder" size="0.005 0.002 0"/>
+            </body>
+        </body>
+    </worldbody>
+
+</mujoco>

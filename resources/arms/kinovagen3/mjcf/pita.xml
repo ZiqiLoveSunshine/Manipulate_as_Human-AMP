@@ -1,0 +1,40 @@
+<mujoco model="pita">
+    <compiler angle="radian" meshdir="../meshes/" autolimits="true"/>
+    <option solver="CG" tolerance="1e-6" impratio="10"/>
+    <size nconmax="500" njmax="5000" nstack="5000000"/>
+
+    <asset>
+        <mesh name="pita" file="pita.STL" scale="0.001 0.001 0.001"/>
+        
+    </asset>
+
+    <default>
+      <default class="pita">
+        <general biastype="affine"/>
+        <default class="pitavisual">
+            <geom type="mesh" solimp="0.95 0.99 0.001" solref="0.004 1" priority="1" contype="0" conaffinity="0" group="2"/>
+        </default>
+        <default class="pitacollision">
+            <geom type="mesh" group="3"/>
+        </default>
+      </default>
+
+    </default>
+
+    
+    <worldbody>
+    <site name="pita_pos_world" pos="0.04 0.002 0.04" size="0.01 0.01 0.01" type="sphere" rgba="1 0 0 0.2"/>
+        <body name="pita" pos="0 0 0" quat="1 0 0 0">
+            <inertial pos="0.04 0.002 0.04" quat="0.5 -0.5 0.5 0.5" mass="1" diaginertia="0.0003 0.0003 0.0005" />
+            <!-- <site name="lower_pos" pos="0 0 0" size="0.01 0.01 0.01" type="sphere" rgba="1 0 0 0.5"/> -->
+            <geom class="pitavisual" friction="0.7" mesh="pita" />
+            <geom class="pitacollision" mesh="pita" />
+            <!-- <joint name='pita_pos_world' pos="0.04 0.002 0.04" type="free"/> -->
+            <site name="pita_pos" pos="0.04 0.002 0.04" size="0.01 0.01 0.01" type="sphere" rgba="1 1 1 0.1"/>
+            <body name="PitaMid" pos="0.04 0.002 0.04" quat="0.707 -0.707 0 0">
+                <geom type="cylinder" size="0.005 0.002 0"/>
+            </body>
+        </body>
+    </worldbody>
+
+</mujoco>

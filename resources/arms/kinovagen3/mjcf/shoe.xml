@@ -1,0 +1,34 @@
+<mujoco model="shoe">
+    <compiler angle="radian" meshdir="../meshes/" autolimits="true"/>
+    <option solver="CG" tolerance="1e-6" impratio="10"/>
+    <size nconmax="500" njmax="5000" nstack="5000000"/>
+
+    <asset>
+        <mesh name="shoe" file="shoe.stl" scale="0.001 0.001 0.001"/>
+    </asset>
+
+    <default>
+      <default class="shoe">
+        <general biastype="affine"/>
+        <default class="shoevisual">
+            <geom type="mesh" solimp="0.95 0.99 0.001" solref="0.004 1" priority="1" contype="0" conaffinity="0" group="2"/>
+        </default>
+        <default class="shoecollision">
+            <geom type="mesh" group="3"/>
+        </default>
+      </default>
+
+    </default>
+
+    
+    <worldbody>
+    <site name="shoe_pos_world" pos="0.025 0.1 0" size="0.01 0.01 0.01" type="sphere" rgba="1 0 0 0.2"/>
+        <body name="shoe" pos="0 0 0" quat="0.5 0.5 0.5 0.5">
+            <inertial pos="0.1 0 0.02" quat="1 0 0 0" mass="20" diaginertia="0.01 0.03 0.03" />
+            <!-- <site name="lower_pos" pos="0 0 0" size="0.01 0.01 0.01" type="sphere" rgba="1 0 0 0.5"/> -->
+            <geom class="shoevisual" friction="0.7" mesh="shoe" />
+            <geom class="shoecollision" pos="0.1 0 0.025" size="0.1 0.04 0.03" type="box"/>
+        </body>
+    </worldbody>
+
+</mujoco>
